@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  nt:
+    image: node:alpine
+    ports:
+      - 8301:3000
+      - 8302:8202
+      - 8303:8888
+    networks:
+      - net
+    environment:
+       - http_proxy=http://192.168.3.32:1080
+       - https_proxy=http://192.168.3.32:1080
+    working_dir: /app
+    command: "yarn dev"
+    volumes:
+      - ./app:/app
+      - ./:/working
+
+networks:
+  net:
+    ipam:
+      driver: default
