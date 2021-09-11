@@ -10,8 +10,10 @@ services:
     networks:
       - net
     environment:
-       - http_proxy=http://192.168.3.32:1080
-       - https_proxy=http://192.168.3.32:1080
+      - BUILD_PATH=dist
+      - PUBLIC_URL=/
+      #  - http_proxy=http://192.168.3.32:1080
+      #  - https_proxy=http://192.168.3.32:1080
     working_dir: /app
     command: "yarn dev"
     volumes:
